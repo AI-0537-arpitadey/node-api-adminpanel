@@ -6,10 +6,12 @@ const categoryOpt = {
   options: {
     properties: {
       description: {
-        type: 'richtext',
-      }
-    }
-  }
-}
+        type: "richtext",
+      },
+      createdAt: { isVisible: false },
+      updatedAt: { isVisible: false },
+    },
+  },
+};
 
 export { categoryOpt }
