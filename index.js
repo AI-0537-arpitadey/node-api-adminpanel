@@ -1,36 +1,56 @@
+import express from "express"
+import mongoose from "mongoose"
+
 import AdminJS from "adminjs"
 import AdminJSExpress from "@adminjs/express"
-import mongoose from "mongoose"
 import * as AdminJSMongoose from "@adminjs/mongoose"
-import express from "express"
 
-import { categoryOpt } from "./resourceOptions/category.js"
+// all resource options
+
+// import { categoryOpt } from "./resourceOptions/category.js"
+// import { userOpt } from "./resourceOptions/user.js"
 import { qnaOpt } from "./resourceOptions/qna.js"
-import { institutionOpt } from "./resourceOptions/institution.js"
+// import { institutionOpt } from "./resourceOptions/institution.js"
 import { tagOpt } from "./resourceOptions/tag.js"
 import { postOpt } from "./resourceOptions/post.js"
+
+// custome dashboard 
+// import CustomDashboard from './custom-dashboard-component.js'; 
+
 
 AdminJS.registerAdapter({
   Resource: AdminJSMongoose.Resource,
   Database: AdminJSMongoose.Database,
 })
 
+// connect to database
 const start = async () => {
   const PORT = 4000
-  await mongoose.connect("mongodb://localhost:27017/nodeadmin")
+  await mongoose.connect("mongodb://localhost:27017/UFO-Encyclopedia-API")
+
+  const app = express()
 
   const adminOptions = {
+    branding: {
+      companyName: 'Aggregate Intelligence',
+      softwareBrothers: {
+        logo: './logo.png', 
+      },
+    },
+    // dashboard: {
+    //   component: CustomDashboard, 
+    // },
     // We pass Category to `resources`
     resources: [
-      categoryOpt,
+      // categoryOpt,
+      // userOpt,
       qnaOpt,
-      institutionOpt,
+      // institutionOpt,
       tagOpt,
       postOpt
     ],
   }
 
-  const app = express()
 
   const admin = new AdminJS(adminOptions)
 

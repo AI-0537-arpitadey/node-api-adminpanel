@@ -5,8 +5,9 @@ const tagOpt = {
   resource: Tag,
   options: {
     properties: {
-      
-    }
+      createdAt: { isVisible: false },
+      updatedAt: { isVisible: false },
+    },
   }
 }
 

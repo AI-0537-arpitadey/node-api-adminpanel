@@ -1,6 +1,9 @@
-const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
-const randomstring = require("randomstring")
+import mongoose from 'mongoose'
+import bcrypt from "bcrypt";
+import randomstring from "randomstring";
+
+// const bcrypt = require("bcrypt")
+// const randomstring = require("randomstring")
 
 // const mailer = require("../lib/mail")
 
@@ -74,10 +77,10 @@ const UserSchema = new mongoose.Schema({
     ref: "Institution",
   },
 
-  isDeleted: {
-    type: Boolean,
-    default: false
-  }
+  // isDeleted: {
+  //   type: Boolean,
+  //   default: false
+  // }
 })
 
 UserSchema.pre("validate", function (next) {
@@ -138,4 +141,6 @@ UserSchema.set("timestamps", true)
 UserSchema.set("toJSON", { virtuals: true })
 UserSchema.set("toObject", { virtuals: true })
 
-module.exports = mongoose.model("User", UserSchema)
+const User = mongoose.model('User', UserSchema)
+
+export { User }
