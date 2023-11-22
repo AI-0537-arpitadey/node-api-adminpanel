@@ -1,20 +1,24 @@
-import { Post } from '../models/post.js'
-
+import { Post } from '../models/post.js';
 
 const postOpt = {
   resource: Post,
   options: {
     properties: {
-      id: { isVisible: { list: false, show: true } },
+      _id: {
+        isVisible: { list: false, show: true, filter: true, edit: false },
+      },
       createdAt: { isVisible: false },
       updatedAt: { isVisible: false },
       content: {
         type: 'richtext',
-      }
+      },
     },
-    
-  }
-}
+    actions: {
+      delete: {
+        isVisible: false,
+      },
+    },
+  },
+};
 
-export { postOpt }
-
+export { postOpt };

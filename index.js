@@ -6,16 +6,13 @@ import AdminJSExpress from "@adminjs/express"
 import * as AdminJSMongoose from "@adminjs/mongoose"
 
 // all resource options
-
-// import { categoryOpt } from "./resourceOptions/category.js"
-// import { userOpt } from "./resourceOptions/user.js"
 import { qnaOpt } from "./resourceOptions/qna.js"
-// import { institutionOpt } from "./resourceOptions/institution.js"
 import { tagOpt } from "./resourceOptions/tag.js"
 import { postOpt } from "./resourceOptions/post.js"
+// import { userOpt } from "./resourceOptions/user.js"
+// import { institutionOpt } from "./resourceOptions/institution.js"
 
-// custome dashboard 
-// import CustomDashboard from './custom-dashboard-component.js'; 
+
 
 
 AdminJS.registerAdapter({
@@ -30,24 +27,20 @@ const start = async () => {
 
   const app = express()
 
+  app.use(express.static('public'));
   const adminOptions = {
     branding: {
       companyName: 'Aggregate Intelligence',
-      softwareBrothers: {
-        logo: './logo.png', 
-      },
+      
     },
-    // dashboard: {
-    //   component: CustomDashboard, 
-    // },
-    // We pass Category to `resources`
+   
+    //pass Category to `resources`
     resources: [
-      // categoryOpt,
-      // userOpt,
       qnaOpt,
-      // institutionOpt,
       tagOpt,
       postOpt
+      // userOpt,
+      // institutionOpt,
     ],
   }
 
